@@ -20,7 +20,7 @@ const _loginSchema = require("../schemas/loginSchema");
     try {
         // Find the user by userId, lean() for a plain JavaScript object
         const user = await request.getDocument({
-            userId: data.userId
+            mobile: data.mobile
         });
         if (!user) {
             throw new Error("Invalid userId. User not found.");
@@ -31,7 +31,7 @@ const _loginSchema = require("../schemas/loginSchema");
             // Sign a JWT token with user information (excluding password)
             const token = request.signJWT({
                 id: user._id,
-                userId: user.userId
+                mobile: user.mobile
             });
             // Omit the password from the response
             delete user.password;

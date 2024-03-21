@@ -1,7 +1,7 @@
 import { Static, Type } from "@sinclair/typebox";
 
 const options = Type.Object({
-  userId: Type.String({ maxLength: 6, minLength: 6 }),
+  mobile: Type.String({ maxLength: 10, minLength: 10 }),
   password: Type.RegExp(`^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,16}$`),
 });
 

@@ -10,9 +10,9 @@ Object.defineProperty(exports, "loginRouteSchema", {
 });
 const _typebox = require("@sinclair/typebox");
 const options = _typebox.Type.Object({
-    userId: _typebox.Type.String({
-        maxLength: 6,
-        minLength: 6
+    mobile: _typebox.Type.String({
+        maxLength: 10,
+        minLength: 10
     }),
     password: _typebox.Type.RegExp(`^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,16}$`)
 });
