@@ -1,8 +1,9 @@
+import fastifyCors from "@fastify/cors";
 import { FastifyInstance } from "fastify";
 import fp from "fastify-plugin";
+import authenticate from "../middleware/authenticate";
 import databasePlugin from "./databasePlugin";
 import tokenPlugin from "./tokenPlugin";
-import authenticate from "../middleware/authenticate";
 
 /**
  * Registers multiple plugins for a Fastify instance.
@@ -12,6 +13,7 @@ import authenticate from "../middleware/authenticate";
  * @param fastify - The FastifyInstance to register the plugins.
  */
 async function registerPlugins(fastify: FastifyInstance): Promise<void> {
+  await fastify.register(fastifyCors, { origin: ["*"] });
   // Register the JWT token handling plugin
   await fastify.register(tokenPlugin);
 

@@ -9,10 +9,11 @@ Object.defineProperty(exports, // Export the plugin registration function as a F
         return _default;
     }
 });
+const _cors = /*#__PURE__*/ _interop_require_default(require("@fastify/cors"));
 const _fastifyplugin = /*#__PURE__*/ _interop_require_default(require("fastify-plugin"));
+const _authenticate = /*#__PURE__*/ _interop_require_default(require("../middleware/authenticate"));
 const _databasePlugin = /*#__PURE__*/ _interop_require_default(require("./databasePlugin"));
 const _tokenPlugin = /*#__PURE__*/ _interop_require_default(require("./tokenPlugin"));
-const _authenticate = /*#__PURE__*/ _interop_require_default(require("../middleware/authenticate"));
 function _interop_require_default(obj) {
     return obj && obj.__esModule ? obj : {
         default: obj
@@ -25,6 +26,11 @@ function _interop_require_default(obj) {
  *
  * @param fastify - The FastifyInstance to register the plugins.
  */ async function registerPlugins(fastify) {
+    await fastify.register(_cors.default, {
+        origin: [
+            "*"
+        ]
+    });
     // Register the JWT token handling plugin
     await fastify.register(_tokenPlugin.default);
     // Register the database connection plugin
