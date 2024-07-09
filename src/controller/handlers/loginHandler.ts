@@ -23,8 +23,7 @@ async function loginHandler(request: FastifyRequest, response: FastifyReply): Pr
 
     if (isPasswordValid) {
       // Sign a JWT token with user information (excluding password)
-      const token = request.signJWT({ id: user._id, mobile: user.mobile });
-
+      const token = await response.jwtSign({ id: user._id, mobile: user.mobile }, { expiresIn: "365d" });
       // Omit the password from the response
       delete user.password;
 

@@ -29,9 +29,11 @@ const _loginSchema = require("../schemas/loginSchema");
         const isPasswordValid = await request.comparePassword(data.password, user.password);
         if (isPasswordValid) {
             // Sign a JWT token with user information (excluding password)
-            const token = request.signJWT({
+            const token = await response.jwtSign({
                 id: user._id,
                 mobile: user.mobile
+            }, {
+                expiresIn: "365d"
             });
             // Omit the password from the response
             delete user.password;
