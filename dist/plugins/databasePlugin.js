@@ -8,8 +8,8 @@ Object.defineProperty(exports, "default", {
         return _default;
     }
 });
-const _mongoose = /*#__PURE__*/ _interop_require_default(require("mongoose"));
 const _fastifyplugin = /*#__PURE__*/ _interop_require_default(require("fastify-plugin"));
+const _mongoose = /*#__PURE__*/ _interop_require_default(require("mongoose"));
 function _interop_require_default(obj) {
     return obj && obj.__esModule ? obj : {
         default: obj

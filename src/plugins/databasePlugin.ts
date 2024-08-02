@@ -1,6 +1,6 @@
 import { FastifyInstance } from "fastify";
-import mongoose from "mongoose";
 import fp from "fastify-plugin";
+import mongoose from "mongoose";
 
 async function connectToDatabase() {
   try {

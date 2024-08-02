@@ -2,9 +2,9 @@
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+const _dotenv = /*#__PURE__*/ _interop_require_default(require("dotenv"));
 const _fastify = /*#__PURE__*/ _interop_require_default(require("fastify"));
 const _app = /*#__PURE__*/ _interop_require_default(require("./app"));
-const _dotenv = /*#__PURE__*/ _interop_require_default(require("dotenv"));
 function _interop_require_default(obj) {
     return obj && obj.__esModule ? obj : {
         default: obj
@@ -22,8 +22,8 @@ _dotenv.default.config();
         // Build the Fastify app with plugins, routes, and utilities
         const app = (0, _app.default)(fastifyInstance);
         // Start the server on the specified port and host
-        const port = Number(process.env.PORT);
-        const host = process.env.HOST;
+        const port = Number(process.env.PORT) || 5200;
+        const host = process.env.HOST || "0.0.0.0";
         // Check if PORT and HOST environment variables are set
         if (!port || !host) {
             console.error("PORT or HOST environment variable is not set");

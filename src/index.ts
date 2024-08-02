@@ -1,6 +1,6 @@
+import dotenv from "dotenv";
 import fastify from "fastify";
 import createApp from "./app";
-import dotenv from "dotenv";
 
 dotenv.config();
 
@@ -18,8 +18,8 @@ const createServer = async (): Promise<void> => {
     const app = createApp(fastifyInstance);
 
     // Start the server on the specified port and host
-    const port = Number(process.env.PORT);
-    const host = process.env.HOST;
+    const port = Number(process.env.PORT) || 5200;
+    const host = process.env.HOST || "0.0.0.0";
 
     // Check if PORT and HOST environment variables are set
     if (!port || !host) {
